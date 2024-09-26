@@ -1,42 +1,8 @@
 ﻿@page
-@model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "메인";
 }
 
-<body class="grid">
-    <style>
-        .card:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transform: scale(1.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card-body:hover .card-title {
-            color: #007bff;
-        }
-
-        .job {
-            background-color: lightgray;
-        }
-    </style>
-    <div class="container mt-5">
-        <div class="row">
-            @foreach (Dummy d in DummyController.Dummies)
-            {
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">@d.Title</h5>
-                            <p class="card-text">모집 기간: @d.Date</p>
-                            <p class="card-text">분류: @d.Tag</p>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<body>
+    메인
 </body>

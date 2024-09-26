@@ -1,61 +1,127 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="kr">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Capstone</title>
+    <title>알려주카 - @ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Capstone.styles.css" asp-append-version="true" />
 </head>
 
 <body>
+    <style>
+        a {
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            color: black;
+        }
+
+            a:hover {
+                color: black
+            }
+    </style>
+
     <header class="main-head">
+
         <div class="logo">
             <h1>알려주카</h1>
         </div>
+
         <div class="search-bar">
             <input type="text" placeholder="검색어를 입력해주세요." />
             <button><img src="search-icon.png" alt="Search"></button>
         </div>
+
         <div class="user-options">
-            <span>로그인</span>
+
+            <span>
+                <a asp-page="/Login">
+                    로그인
+                </a>
+            </span>
+
             <span>고객센터</span>
         </div>
+
     </header>
+
+    <style>
+        .taps nav ul li a {
+            padding: 20px;
+        }
+    </style>
 
     <div class="taps">
         <nav>
             <ul>
-                <li class="job">취업</li>
-                <li>생활정보</li>
-                <li>인프라구축</li>
-                <li>마이페이지</li>
+                <li>
+                    <a asp-page="/Job" class="job">
+                        취업
+                    </a>
+                </li>
+                <li>
+                    <a asp-page="/LifeInfo/LifeThread" class="life-info">
+                        생활정보
+                    </a>
+                </li>
+                <li>
+                    <a asp-page="/InfraStructure" class="infra">
+                        인프라구축
+                    </a>
+                </li>
+                <li>
+                    <a asp-page="/MyPage" class="my-page">
+                        마이페이지
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
 
-    <div class="container">
+    <style>
+        .page-body {
+            display: grid;
+            grid-template-columns: 1fr 8fr 1fr;
+        }
+    </style>
+
+    <div class="page-body">
+
+        <div id="lsection">
+            @RenderSection("lsection", required: false)
+        </div>
+
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+
+        <div id="rsection">
+            @RenderSection("rsection", required: false)
+        </div>
+
     </div>
 
     <footer>
+
         <div class="footer-info">
             <h1>알려주카</h1>
             <p>제주대학교 데이터사이언스학과 CMDS 팀</p>
             <p>팀장: 김지엽 | 팀원: 강승일, 강예빈, 백민하, 이상은</p>
             <p>메일: mail@mail.com  |  연락처: 064-xxx-xxxx</p>
         </div>
+
         <hr />
+
         <div class="footer-links">
-            <a href="#">이용약관</a>
-            <a href="#">개인정보 처리 방침</a>
-            <a href="#">채용</a>
-            <a href="#">고객센터</a>
-            <a href="#">저작권 안내</a>
+            <div><a href="#">이용약관</a></div>
+            <div><a href="#">개인정보 처리 방침</a></div>
+            <div><a href="#">채용</a></div>
+            <div><a href="#">고객센터</a></div>
+            <div><a href="#">저작권 안내</a></div>
         </div>
+
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

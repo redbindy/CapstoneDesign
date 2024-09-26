@@ -1,0 +1,85 @@
+﻿@page
+@model Capstone.Pages.JobModel
+@{
+    const int CELL_COUNT = 9;
+}
+
+<body>
+    <style>
+        .job {
+            background-color: lightgray;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-rows: repeat(3, 1fr);
+            grid-template-columns: repeat(3, 1fr);
+            row-gap: 10px;
+            column-gap: 10px;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .page-buttons {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .page-button {
+            display: inline-block;
+            padding: 10px 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease
+        }
+
+    </style>
+    <div class="grid-container">
+        @{
+            int start = (Model.PageNumber - 1) * 9;
+            int end = start + CELL_COUNT;
+            if (end > Model.Dummies.Count)
+            {
+                end = Model.Dummies.Count;
+            }
+
+            for (int i = start; i < end; ++i)
+            {
+                Dummy d = Model.Dummies[i];
+                <div class="grid-item">
+                    <a href="@d.Link" class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">@d.Title</h5>
+                            <p class="card-text">모집 기간: @d.Date</p>
+                            <p class="card-text">분류: @d.Tag</p>
+                            <p class="card-text">회사: @d.Company</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+    </div>
+
+    <div class="page-buttons">
+        @{
+            int buttonCount = (Model.Dummies.Count + CELL_COUNT - 1) / CELL_COUNT;
+
+            for (int i = 1; i <= buttonCount; ++i)
+            {
+                <form method="get">
+                    <a class="page-button" id="@i" asp-page-handler="OnPageButton" asp-route-id="@i">@i</a>
+                </form>
+            }
+        }
+    </div>
+</body>

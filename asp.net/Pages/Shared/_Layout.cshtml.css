@@ -58,8 +58,6 @@ for details on configuring this project to bundle and minify static web assets. 
 
 nav {
     display: flex;
-    justify-content: center;
-    align-items: center;
     border-bottom: 1px solid #000;
 }
 
@@ -70,7 +68,6 @@ nav {
     }
 
     nav li {
-        padding: 20px;
         font-size: 1.5rem;
         cursor: pointer;
         position: relative;
@@ -83,11 +80,6 @@ nav {
         background-color: gray;
         text-decoration: underline;
     }
-
-
-a {
-    color: #0077cc;
-}
 
 .border-top {
     border-top: 1px solid #e5e5e5;
@@ -126,7 +118,7 @@ footer {
 
 .footer-links {
     display: flex;
-    justify-content: left;
+    justify-content: flex-start;
     gap: 30px;
 }
 

@@ -1,0 +1,54 @@
+﻿@page
+@model LifeThreadModel
+
+@{
+    Layout = "_LifeInfoLayout.cshtml";
+}
+
+<body>
+    <style>
+        .LifeThread {
+            background-color: lightgray;
+        }
+
+        th, td {
+            text-align: center;
+        }
+    </style>
+
+    <div align="right">
+        <button>작성하기</button>
+    </div>
+
+    <table id="post-table" width="100%">
+        <thead>
+            <tr>
+                <th>작성자</th>
+                <th>제목</th>
+                <th>날짜</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>작성자</td>
+                <td>제목</td>
+                <td>24-12-30</td>
+            </tr>
+            <tr>
+                <td>작성자</td>
+                <td>제목</td>
+                <td>24-12-30</td>
+            </tr>
+            <tr>
+                <td>작성자</td>
+                <td>제목</td>
+                <td>24-12-30</td>
+            </tr>
+            <tr>
+                <td>작성자</td>
+                <td>제목</td>
+                <td>24-12-30</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
