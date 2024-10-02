@@ -1,0 +1,84 @@
+﻿@page
+@model Capstone.Pages.SignupModel
+@{
+}
+
+<body>
+    <style>
+        .signup {
+            margin: 60px auto;
+            width: 24rem;
+        }
+
+        .signup-group {
+            margin-bottom: 0.5rem;
+        }
+
+        .signup label {
+            display: block;
+        }
+
+        .signup input {
+            box-sizing: border-box;
+            padding: 0.5rem;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        .signup-button {
+            width: 100%;
+            padding: 0.5rem;
+            background: #000;
+            color: #fff;
+            font-size: 1rem;
+            border: none;
+        }
+    </style>
+
+    <form method="post" asp-action="RegisterInput">
+        <table class="signup">
+            <tr>
+                <td><h2>회원가입</h2></td>
+            </tr>
+            <tr>
+                <td>아이디</td>
+            </tr>
+            <tr>
+                <td><input type="text" class="text" asp-for="ID"></td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+            </tr>
+            <tr>
+                <td><input type="password" class="text" asp-for="Password"></td>
+            </tr>
+            <tr>
+                <td>비밀번호 확인</td>
+            </tr>
+            <tr>
+                <td><input type="password" class="text" asp-for="Password"></td>
+            </tr>
+            <tr>
+                <td>이름</td>
+            </tr>
+            <tr>
+                <td><input type="text" class="text" asp-for="Name"></td>
+            </tr>
+            <tr>
+                <td>회원 유형</td>
+            </tr>
+            <tr>
+                <td>
+                    <select asp-for="UserType">
+                        <option value="0">도민</option>
+                        <option value="1">도외민</option>
+                        <option value="2">자영업</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="가입하기" class="signup-button"></td>
+            </tr>
+        </table>
+    </form>
+</body>

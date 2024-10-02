@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>알려주카 - @ViewData["Title"]</title>
+    <title>알려주카</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Capstone.styles.css" asp-append-version="true" />
@@ -37,9 +37,20 @@
         <div class="user-options">
 
             <span>
-                <a asp-page="/Login">
-                    로그인
-                </a>
+                @{
+                    if (Context.Request.Cookies["LoginState"] != "true")
+                    {
+                        <a asp-page="/Login">
+                            로그인
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-page="/Logout">
+                            로그아웃
+                        </a>
+                    }
+                }
             </span>
 
             <span>고객센터</span>
@@ -85,6 +96,25 @@
             display: grid;
             grid-template-columns: 1fr 8fr 1fr;
         }
+
+        .page-buttons {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .page-button {
+            display: inline-block;
+            padding: 10px 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease
+        }
     </style>
 
     <div class="page-body">
@@ -94,7 +124,23 @@
         </div>
 
         <main role="main" class="pb-3">
-            @RenderBody()
+            <div>
+                @RenderBody()
+            </div>
+            <div class="page-buttons">
+                @{
+                    if (ViewData["MaxPageCount"] != null)
+                    {
+                        for (int i = 1; i <= (int)ViewData["MaxPageCount"]; ++i)
+                        {
+                            <form method="get">
+                                <a class="page-button" asp-page-handler="OnPageButton" asp-route-pageNumber="@i">@i</a>
+                            </form>
+                        }
+                    }
+
+                }
+            </div>
         </main>
 
         <div id="rsection">

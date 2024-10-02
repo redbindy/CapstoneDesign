@@ -1,7 +1,11 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 namespace Capstone
 {
     public class Program
     {
+        public const int DEFAULT_CAPACITY = 1024;
+
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +14,9 @@ namespace Capstone
             builder.Services.AddRazorPages();
 
             var app = builder.Build();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

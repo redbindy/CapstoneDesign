@@ -1,13 +1,19 @@
+using Capstone.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Capstone.Pages.LifeInfo
 {
-    public class LifeThreadModel : PageModel
+    public class LifeThreadModel : BasePageModel
     {
+        public LifeThreadModel()
+            : base(1, 1)
+        {
+        }
+
         public void OnGet()
         {
-            ViewData["Title"] = "생활 게시판";
+            setPageInfos(1, 1);
         }
     }
 }

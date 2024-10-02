@@ -1,47 +1,79 @@
+using Capstone.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics;
+using System.Text;
 
 namespace Capstone.Pages.LifeInfo
 {
-    public class TourModel : PageModel
+    public class TourModel : BaseMultiPageModel
     {
-        public List<Dummy> Dummies = new List<Dummy>();
-
-        public int PageNumber = 1;
-
         public TourModel()
+            : base()
         {
-            Dummies = new List<Dummy>
+            updateEntities();
+        }
+
+        protected override void updateEntities()
+        {
+            mEntities.Clear();
+
+            mEntities.AddRange(new List<BaseEntity>
             {
-                new Dummy("모집1", "24.11.01 ~ 24.11.12", "개발", "회사", "https://www.jejunu.ac.kr/"),
-                new Dummy("모집2", "24.11.01 ~ 24.11.12", "디자인", "회사", "https://www.jejunu.ac.kr/"),
-                new Dummy("모집3", "24.11.01 ~ 24.11.12", "디자인", "회사", "https://www.jejunu.ac.kr/"),
-                new Dummy("모집4", "24.11.01 ~ 24.11.12", "디자인", "회사", "https://www.jejunu.ac.kr/"),
-                new Dummy("모집5", "24.11.01 ~ 24.11.12", "디자인", "회사", "https://www.jejunu.ac.kr/"),
-                new Dummy("모집6", "24.11.01 ~ 24.11.12", "디자인", "회사", "https://www.jejunu.ac.kr/"),
-                new Dummy("모집7", "24.11.01 ~ 24.11.12", "디자인", "회사", "https://www.jejunu.ac.kr/"),
-                new Dummy("모집8", "24.11.01 ~ 24.11.12", "디자인", "회사", "https://www.jejunu.ac.kr/"),
-                new Dummy("모집8", "24.11.01 ~ 24.11.12", "디자인", "회사", "https://cdn.pixabay.com/photo/2023/08/11/08/29/highland-cattle-8183107_1280.jpg"),
-                new Dummy("모집8", "24.11.01 ~ 24.11.12", "디자인", "회사", "https://cdn.pixabay.com/photo/2023/08/11/08/29/highland-cattle-8183107_1280.jpg"),
-                new Dummy("모집8", "24.11.01 ~ 24.11.12", "디자인", "회사", "https://cdn.pixabay.com/photo/2023/08/11/08/29/highland-cattle-8183107_1280.jpg"),
-                new Dummy("모집8", "24.11.01 ~ 24.11.12", "디자인", "회사", "https://cdn.pixabay.com/photo/2023/08/11/08/29/highland-cattle-8183107_1280.jpg"),
-                new Dummy("모집8", "24.11.01 ~ 24.11.12", "디자인", "회사", "https://cdn.pixabay.com/photo/2023/08/11/08/29/highland-cattle-8183107_1280.jpg"),
-                new Dummy("모집8", "24.11.01 ~ 24.11.12", "디자인", "회사", "https://cdn.pixabay.com/photo/2023/08/11/08/29/highland-cattle-8183107_1280.jpg"),
-                new Dummy("모집8", "24.11.01 ~ 24.11.12", "디자인", "회사", "https://cdn.pixabay.com/photo/2023/08/11/08/29/highland-cattle-8183107_1280.jpg"),
-            };
+                new TourEntity("관광지", "https://www.jejunu.ac.kr/", "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006"), 
+                new TourEntity("관광지", "https://www.jejunu.ac.kr/", "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006"), 
+                new TourEntity("관광지", "https://www.jejunu.ac.kr/", "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006"), 
+                new TourEntity("관광지", "https://www.jejunu.ac.kr/", "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006"), 
+                new TourEntity("관광지", "https://www.jejunu.ac.kr/", "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006"), 
+                new TourEntity("관광지", "https://www.jejunu.ac.kr/", "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006"), 
+                new TourEntity("관광지", "https://www.jejunu.ac.kr/", "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006"), 
+                new TourEntity("관광지", "https://www.jejunu.ac.kr/", "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006"), 
+                new TourEntity("관광지", "https://www.jejunu.ac.kr/", "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006"), 
+                new TourEntity("관광지", "https://www.jejunu.ac.kr/", "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006"), 
+                new TourEntity("관광지", "https://www.jejunu.ac.kr/", "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006"), 
+                new TourEntity("관광지", "https://www.jejunu.ac.kr/", "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006"), 
+                new TourEntity("관광지", "https://www.jejunu.ac.kr/", "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006"), 
+                new TourEntity("관광지", "https://www.jejunu.ac.kr/", "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006"), 
+                new TourEntity("관광지", "https://www.jejunu.ac.kr/", "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006"), 
+                new TourEntity("관광지", "https://www.jejunu.ac.kr/", "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006"), 
+                new TourEntity("관광지", "https://www.jejunu.ac.kr/", "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006"),
+                new TourEntity("관광지", "https://www.jejunu.ac.kr/", "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006"),
+                new TourEntity("관광지", "https://www.jejunu.ac.kr/", "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006"),
+                new TourEntity("관광지", "https://www.jejunu.ac.kr/", "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006"),
+                new TourEntity("관광지", "https://www.jejunu.ac.kr/", "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006"),
+            });
         }
 
-        public void OnGet()
+        private class TourEntity : BaseEntity
         {
-            ViewData["Title"] = "관광";
-        }
+            public readonly string mName;
+            public readonly string mUrl;
+            public readonly string mImageUrl;
 
-        public void OnGetOnPageButton(int id)
-        {
-            Debug.Assert(id > 0);
+            public TourEntity(string name, string url, string imageUrl)
+            {
+                Debug.Assert(name != null);
+                Debug.Assert(url != null);
+                Debug.Assert(imageUrl != null);
 
-            PageNumber = id;
+                mName = name;
+                mUrl = url;
+                mImageUrl = imageUrl;
+            }
+
+            public override string ShowData()
+            {
+                StringBuilder sb = new StringBuilder(Program.DEFAULT_CAPACITY);
+
+                sb.AppendLine("<div class=\"grid-item\">");
+                sb.AppendLine($"<a href=\"{mUrl}\" class=\"card\">");
+                sb.AppendLine($"<img class=\"card-image\" src=\"{mImageUrl}\" />");
+                sb.AppendLine("<div class=\"card-body\">");
+                sb.AppendLine($"<h5 class=\"card-title\">{mName}</h5>");
+                sb.AppendLine("</div></a></div>");
+
+                return sb.ToString();
+            }
         }
     }
 }

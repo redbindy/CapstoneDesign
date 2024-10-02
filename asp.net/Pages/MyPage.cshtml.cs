@@ -1,13 +1,24 @@
+using Capstone.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Capstone.Pages
 {
-    public class MyPageModel : PageModel
+    public class MyPageModel : BasePageModel
     {
-        public void OnGet()
+        public MyPageModel()
+            : base(-1, 1)
         {
-            ViewData["Title"] = "마이페이지";
+        }
+
+        public IActionResult OnGet()
+        {
+            if (Request.Cookies["LoginState"] != "true")
+            {
+                return RedirectToPage("Login");
+            }
+
+            return Page();
         }
     }
 }

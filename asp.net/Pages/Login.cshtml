@@ -4,5 +4,63 @@
 }
 
 <body>
-    로그인
+    <style>
+        .login {
+            margin: 60px auto;
+            width: 24rem;
+        }
+
+        .login-group {
+            margin-bottom: 0.5rem;
+        }
+
+        .login label {
+            display: block;
+        }
+
+        .login input {
+            box-sizing: border-box;
+            padding: 0.5rem;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        .login button {
+            width: 100%;
+            padding: 0.5rem;
+            background: #000;
+            color: #fff;
+            font-size: 1rem;
+            border: none;
+        }
+
+        .login .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+
+    <form method="post" class="login">
+        <h1>로그인</h1>
+        <div class="login-group">
+            <label for="login-id-label">
+                아이디
+                <input type="text" id="login-id" asp-for="ID">
+            </label>
+        </div>
+        <div class="login-group">
+            <label for="login-pw-label">
+                비밀번호
+                <input type="password" id="login-pw" asp-for="Password">
+            </label>
+        </div>
+        <div class="login-group">
+            <button type="submit">로그인</button>
+        </div>
+        <div class="login-menu">
+            <a asp-page="Signup">가입하기</a>
+            <a href="">비밀번호를 잊어버리셨나요?</a>
+        </div>
+    </form>
 </body>
