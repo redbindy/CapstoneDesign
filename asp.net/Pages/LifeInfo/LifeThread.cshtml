@@ -2,84 +2,30 @@
 @model LifeThreadModel
 
 @{
-    Layout = "../Shared/_Layout.cshtml";
+    Layout = "_LifeInfoGridLayout.cshtml";
 }
-
-@section lsection {
-
-    <style>
-        .sidebar-tap :hover {
-            background-color: lightgray;
-        }
-    </style>
-
-    <div class="sidebar">
-        <ul>
-            <li class="sidebar-tap">
-                <a asp-page="LifeThread" class="LifeThread">
-                    생활 게시판
-                </a>
-            </li>
-
-            <li class="sidebar-tap">
-                <a asp-page="Tour" class="Tour">
-                    관광
-                </a>
-            </li>
-        </ul>
-    </div>
-}
-
-<style>
-    .life-info {
-        background-color: lightgray;
-    }
-</style>
 
 <body>
     <style>
         .LifeThread {
             background-color: lightgray;
         }
-
-        th, td {
-            text-align: center;
-        }
     </style>
 
-    <div align="right">
-        <button>작성하기</button>
-    </div>
+    <div>
+        @{
+            string dest;
 
-    <table id="post-table" width="100%">
-        <thead>
-            <tr>
-                <th>작성자</th>
-                <th>제목</th>
-                <th>날짜</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>작성자</td>
-                <td>제목</td>
-                <td>24-12-30</td>
-            </tr>
-            <tr>
-                <td>작성자</td>
-                <td>제목</td>
-                <td>24-12-30</td>
-            </tr>
-            <tr>
-                <td>작성자</td>
-                <td>제목</td>
-                <td>24-12-30</td>
-            </tr>
-            <tr>
-                <td>작성자</td>
-                <td>제목</td>
-                <td>24-12-30</td>
-            </tr>
-        </tbody>
-    </table>
+            if (Request.Cookies.ContainsKey("UserCookie"))
+            {
+                dest = "PostingPage";
+            }
+            else
+            {
+                dest = "../Login";
+            }
+
+            <button><a asp-page="@dest">글쓰기</a></button>
+        }
+    </div>
 </body>

@@ -30,25 +30,35 @@
         </div>
 
         <div class="search-bar">
-            <input type="text" placeholder="검색어를 입력해주세요." />
-            <button><img src="search-icon.png" alt="Search"></button>
+            <img src="~/g-logo.png" alt="Logo">
+            <input type="text" id="search-input" placeholder="검색어를 입력해주세요." />
+            <button class="search-button" type="button" onclick="performSearch()">
+                <img src="~/search-button.png" alt="Search">
+            </button>
         </div>
+
+        <script>
+            function performSearch() {
+                var query = document.getElementById('search-input').value;
+                if (query) {
+                    var url = 'https://www.google.co.kr/search?q=' + encodeURIComponent(query);
+                    window.location.href = url;
+                }
+            }
+        </script>
+
 
         <div class="user-options">
 
             <span>
                 @{
-                    if (Context.Request.Cookies["LoginState"] != "true")
+                    if (!Context.Request.Cookies.ContainsKey("UserCookie"))
                     {
-                        <a asp-page="/Login">
-                            로그인
-                        </a>
+                        <a asp-page="/Login">로그인</a>
                     }
                     else
                     {
-                        <a asp-page="/Logout">
-                            로그아웃
-                        </a>
+                        <a asp-page="/Logout">로그아웃</a>
                     }
                 }
             </span>
@@ -68,24 +78,16 @@
         <nav>
             <ul>
                 <li>
-                    <a asp-page="/Job" class="job">
-                        취업
-                    </a>
+                    <a asp-page="/Job" class="job">취업</a>
                 </li>
                 <li>
-                    <a asp-page="/LifeInfo/LifeThread" class="life-info">
-                        생활정보
-                    </a>
+                    <a asp-page="/LifeInfo/LifeThread" class="life-info">생활정보</a>
                 </li>
                 <li>
-                    <a asp-page="/InfraStructure" class="infra">
-                        인프라구축
-                    </a>
+                    <a asp-page="/InfraStructure" class="infra">인프라구축</a>
                 </li>
                 <li>
-                    <a asp-page="/MyPage" class="my-page">
-                        마이페이지
-                    </a>
+                    <a asp-page="/MyPage" class="my-page">마이페이지</a>
                 </li>
             </ul>
         </nav>
@@ -129,16 +131,17 @@
             </div>
             <div class="page-buttons">
                 @{
-                    if (ViewData["MaxPageCount"] != null)
+                    object? maxPageCountDynamic = ViewData["MaxPageCount"];
+
+                    if (maxPageCountDynamic != null)
                     {
-                        for (int i = 1; i <= (int)ViewData["MaxPageCount"]; ++i)
+                        for (int i = 1; i <= (int)maxPageCountDynamic; ++i)
                         {
                             <form method="get">
                                 <a class="page-button" asp-page-handler="OnPageButton" asp-route-pageNumber="@i">@i</a>
                             </form>
                         }
                     }
-
                 }
             </div>
         </main>

@@ -1,4 +1,5 @@
 ﻿@using System.Diagnostics
+@using System.Web
 @{
     Layout = "./_Layout.cshtml";
 }
@@ -17,17 +18,26 @@
         row-gap: 10px;
         column-gap: 10px;
     }
+
+    .card:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: scale(1.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 </style>
 
 <div class="grid-container">
     @{
-        List<string> gridItems = (List<string>)ViewData["GridItems"];
+        object? gridItemsDynamic = ViewData["GridItems"];
+
+        Debug.Assert(gridItemsDynamic != null);
+        List<string> gridItems = (List<string>)gridItemsDynamic;
 
         if (gridItems != null && gridItems.Count != 0)
         {
             foreach (string item in gridItems)
             {
-                @Html.Raw(item)
+                @Html.Raw(item);
             }
         }
     }

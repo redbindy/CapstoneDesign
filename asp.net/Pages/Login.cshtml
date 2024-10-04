@@ -39,6 +39,10 @@
             justify-content: space-between;
             align-items: center;
         }
+
+        .notice {
+            color: red;
+        }
     </style>
 
     <form method="post" class="login">
@@ -46,12 +50,14 @@
         <div class="login-group">
             <label for="login-id-label">
                 아이디
+                <span asp-validation-for="ID" class="notice"></span>
                 <input type="text" id="login-id" asp-for="ID">
             </label>
         </div>
         <div class="login-group">
             <label for="login-pw-label">
                 비밀번호
+                <span asp-validation-for="Password" class="notice"></span>
                 <input type="password" id="login-pw" asp-for="Password">
             </label>
         </div>

@@ -9,12 +9,6 @@ namespace Capstone.Pages
 {
     public class JobModel : BaseMultiPageModel
     {
-        public JobModel()
-            : base()
-        {
-            updateEntities();
-        }
-
         protected override void updateEntities()
         {
             mEntities.Clear();

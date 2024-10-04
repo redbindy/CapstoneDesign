@@ -19,27 +19,35 @@ namespace Capstone.Database
             }
         }
 
-        private SQLiteConnection connection;
+        private SQLiteConnection mConnection;
 
         private Database()
         {
-            connection = new SQLiteConnection(@"Data Source=./WebDB.db");
-            connection.Open();
+            mConnection = new SQLiteConnection(@"Data Source=./Database/WebDB.db");
+            mConnection.Open();
         }
 
         public void Dispose()
         {
-            connection.Close();
+            mConnection.Close();
         }
 
-        public SQLiteDataReader? Select(string columns, string from)
+        public bool Insert(string query)
         {
-            Debug.Assert(!string.IsNullOrEmpty(columns));
-            Debug.Assert(!string.IsNullOrEmpty(from));
+            Debug.Assert(!string.IsNullOrEmpty(query));
 
-            string query = $"select {columns} from {from}";
+            SQLiteCommand cmd = new SQLiteCommand(query, mConnection);
 
-            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+            int result = cmd.ExecuteNonQuery();
+
+            return result > 0;
+        }
+
+        public SQLiteDataReader? Select(string query)
+        {
+            Debug.Assert(!string.IsNullOrEmpty(query));
+
+            SQLiteCommand cmd = new SQLiteCommand(query, mConnection);
 
             return cmd.ExecuteReader();
         }

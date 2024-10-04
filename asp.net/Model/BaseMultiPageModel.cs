@@ -14,7 +14,7 @@ namespace Capstone.Model
         protected BaseMultiPageModel()
             : base(1, 1)
         {
-
+            updateEntities();
         }
 
         public void OnGet()

@@ -8,12 +8,6 @@ namespace Capstone.Pages.LifeInfo
 {
     public class TourModel : BaseMultiPageModel
     {
-        public TourModel()
-            : base()
-        {
-            updateEntities();
-        }
-
         protected override void updateEntities()
         {
             mEntities.Clear();
@@ -46,9 +40,9 @@ namespace Capstone.Pages.LifeInfo
 
         private class TourEntity : BaseEntity
         {
-            public readonly string mName;
-            public readonly string mUrl;
-            public readonly string mImageUrl;
+            private readonly string mName;
+            private readonly string mUrl;
+            private readonly string mImageUrl;
 
             public TourEntity(string name, string url, string imageUrl)
             {

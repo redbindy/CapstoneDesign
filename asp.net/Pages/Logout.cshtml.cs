@@ -7,7 +7,7 @@ namespace Capstone.Pages
     {
         public IActionResult OnGet()
         {
-            Response.Cookies.Delete("LoginState");
+            Response.Cookies.Delete("UserCookie");
 
             return RedirectToPage("login");
         }
