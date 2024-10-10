@@ -32,9 +32,12 @@ namespace Capstone.Pages
 
         public IActionResult OnPost()
         {
-            Debug.Assert(ModelState.IsValid);
-            Debug.Assert(Password != null);
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
 
+            Debug.Assert(Password != null);
             string passwordHash = getPasswordHash(Password);
 
             Database.Database db = Database.Database.Instance;

@@ -1,4 +1,5 @@
 ﻿@page
+@using System.Diagnostics
 @model Capstone.Pages.LifeInfo.PostModel
 @{
 }
@@ -108,15 +109,18 @@
 
         @if (Request.Cookies.ContainsKey("UserCookie"))
         {
+            string? userInfo = Request.Cookies["UserCookie"];
+            Debug.Assert(userInfo != null);
+
             <div class="comment-form">
                 <h2>댓글 작성</h2>
-                <span asp-validation-for="commentBody" class="notice"></span>
+                <span asp-validation-for="CommentBody" class="notice"></span>
                 <form method="post">
-                    <textarea rows="4" placeholder="댓글을 입력하세요..." asp-for="commentBody"></textarea>
+                    <textarea rows="4" placeholder="댓글을 입력하세요..." asp-for="CommentBody"></textarea>
                     <button type="submit"
                             asp-page-handler="OnCommentSubmit"
                             asp-route-postId="@Model.ID"
-                            asp-route-userInfo="@Model.UserInfo">
+                            asp-route-userInfo="@userInfo">
                         댓글 작성하기
                     </button>
                 </form>

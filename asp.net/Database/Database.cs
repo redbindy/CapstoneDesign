@@ -23,7 +23,7 @@ namespace Capstone.Database
 
         private Database()
         {
-            mConnection = new SQLiteConnection(@"Data Source=./Database/WebDB.db");
+            mConnection = new SQLiteConnection(@"Data Source=wwwroot/db/WebDB.db");
             mConnection.Open();
         }
 

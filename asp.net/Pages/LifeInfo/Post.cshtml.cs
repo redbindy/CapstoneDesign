@@ -43,6 +43,7 @@ namespace Capstone.Pages.LifeInfo
                 Body = dbReader.GetString(1);
                 UserInfo = dbReader.GetString(2);
             }
+
             query = $"select CommentID, Body, UserInfo from Comment where PostID={postId}";
             using (var dbReader = db.Select(query))
             {
@@ -68,10 +69,10 @@ namespace Capstone.Pages.LifeInfo
 
         [BindProperty]
         [Required(ErrorMessage = "내용을 입력해주세요.")]
-        public string commentBody { get; set; }
+        public string CommentBody { get; set; }
         public void OnPostOnCommentSubmit(long postId, string userInfo)
         {
-            string query = $"insert into Comment (Body, UserInfo, PostID) values('{commentBody}', '{userInfo}', {postId})";
+            string query = $"insert into Comment (Body, UserInfo, PostID) values('{CommentBody}', '{userInfo}', {postId})";
 
             Database.Database db = Database.Database.Instance;
 

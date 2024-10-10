@@ -18,7 +18,7 @@ namespace Capstone.Pages.LifeInfo
 
             Database.Database db = Database.Database.Instance;
 
-            string query = $"select * from Post";
+            string query = $"select * from Post order by Time desc";
             using (System.Data.SQLite.SQLiteDataReader? dbReader = db.Select(query))
             {
                 if (dbReader == null)

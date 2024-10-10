@@ -32,7 +32,7 @@ namespace Capstone.Pages.LifeInfo
             string? userInfo = Request.Cookies["UserCookie"];
             Debug.Assert(userInfo != null);
 
-            string query = $"insert into Post (Title, Body, Time, UserInfo) values('{Title}', '{Body}', '{DateTime.UtcNow.AddHours(9).ToString()}','{userInfo}')";
+            string query = $"insert into Post (Title, Body, Time, UserInfo) values('{Title}', '{Body}', '{DateTime.UtcNow.AddHours(9).ToString("yyyy-MM-dd HH:mm")}','{userInfo}')";
 
             Database.Database db = Database.Database.Instance;
 
