@@ -21,12 +21,24 @@
             a:hover {
                 color: black
             }
+
+        .footer-up {
+            display: flex;
+        }
+
+        .footer-info {
+            margin-right: auto;
+        }
+
+            .footer-up img {
+                float: right;
+            }
     </style>
 
     <header class="main-head">
 
         <div class="logo">
-            <h1>알려주카</h1>
+            <img class="main-logo" src="~/main-logo-50%.png" alt="main_logo" />
         </div>
 
         <div class="search-bar">
@@ -154,11 +166,15 @@
 
     <footer>
 
-        <div class="footer-info">
-            <h1>알려주카</h1>
-            <p>제주대학교 데이터사이언스학과 CMDS 팀</p>
-            <p>팀장: 김지엽 | 팀원: 강승일, 강예빈, 백민하, 이상은</p>
-            <p>메일: mail@mail.com  |  연락처: 064-xxx-xxxx</p>
+        <div class="footer-up">
+            <div class="footer-info">
+                <h1>알려주카</h1>
+                <p>제주대학교 데이터사이언스학과 CMDS 팀</p>
+                <p>팀장: 김지엽 | 팀원: 강승일, 강예빈, 백민하, 이상은</p>
+                <p>메일: mail@mail.com  |  연락처: 064-xxx-xxxx</p>
+            </div>
+
+            <img src="~/cdms-logo.png" />
         </div>
 
         <hr />
@@ -170,7 +186,6 @@
             <div><a href="#">고객센터</a></div>
             <div><a href="#">저작권 안내</a></div>
         </div>
-
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

@@ -15,11 +15,6 @@ for details on configuring this project to bundle and minify static web assets. 
     border-bottom: 1px solid #000;
 }
 
-.logo h1 {
-    font-size: 2rem;
-    font-weight: bold;
-}
-
 .search-bar {
     display: flex;
     align-items: center;
