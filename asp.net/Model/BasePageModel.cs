@@ -29,15 +29,16 @@ namespace Capstone.Model
         {
             string remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString();
             string cookie = (string)ViewData["UserCookie"];
+            string datetime = DateTime.UtcNow.AddHours(9).ToString();
 
             string query;
             if (cookie != null)
             {
-                query = $"insert into VisitLog (ip, cookie) values(\'{remoteIpAddress}\', \'{cookie}\')";
+                query = $"insert into VisitLog (ip, cookie, datetime) values(\'{remoteIpAddress}\', \'{cookie}\', \'{datetime}\')";
             }
             else
             {
-                query = $"insert into VisitLog (ip) values(\'{remoteIpAddress}\')";
+                query = $"insert into VisitLog (ip, datetime) values(\'{remoteIpAddress}\', \'{datetime}\')";
             }
 
             Database.Database db = Database.Database.Instance;
