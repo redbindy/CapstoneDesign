@@ -11,3 +11,130 @@
         }
     </style>
 </body>
+
+<style>
+
+    .container {
+        display: flex;
+    }
+
+    /* 좌측바 스타일 */
+    .sidebar {
+        min-width: 200px; /* 좌측바의 고정된 너비 */
+        background-color: #FFFFFF;
+        color: black;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+        .sidebar h2 {
+            border-bottom: 2px solid #000; /* 검은색 가로선 */
+            padding-bottom: 10px;
+            width: 100%;
+        }
+
+    /* 메인 콘텐츠 스타일 */
+    .content {
+        box-sizing: border-box;
+        flex-grow: 1;
+        width: 100%;
+    }
+
+    .image-block {
+        display: inline-block; /* 가로로 나열 */
+        padding-right: 59px; /* 이미지 블록 간격 */
+        box-sizing: border-box;
+    }
+
+        .image-block img {
+            width: 150px;
+            height: 150px;
+        }
+
+    .image-grid {
+        margin-bottom: 30px; /* 그룹 사이 간격 */
+        width: 100%; /* 부모 블록의 너비에 맞추기 */
+        height: auto;
+    }
+
+    .image-title {
+        margin-top: 10px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+</style>
+<body>
+
+    <div class="container">
+        <!-- 좌측바 -->
+        <div class="sidebar">
+            <h2>취업</h2>
+        </div>
+
+        <!-- 이미지 블록이 포함된 메인 콘텐츠 영역 -->
+        <div class="content">
+            <!-- 첫 번째 이미지 블록 그룹 -->
+            <div class="image-grid">
+                <div class="image-title">[공공]</div>
+                <div class="image-block">
+                    <a href="https://www.work24.go.kr/cm/main.do" target="_blank">
+                        <img src="https://www.work24.go.kr/cm/static/images/bi106_32.svg" border="0" alt="Image 1">
+                    </a>
+                </div>
+                <div class="image-block">
+                    <a href="https://www.work.go.kr/jeju/main.do" target="_blank">
+                        <img src="img/jejuwork.png" alt="Image 2">
+                    </a>
+                </div>
+                <div class="image-block">
+                    <a href="https://www.jejunu.ac.kr/" target="_blank">
+                        <img src="img/jejunu.png" alt="Image 3">
+                    </a>
+                </div>
+                <div class="image-block">
+                    <a href="https://www.keis.or.kr/main/index.do" target="_blank">
+                        <img src="img/keis.png" alt="Image 4">
+                    </a>
+                </div>
+                <div class="image-block">
+                    <a href="https://www.worldjob.or.kr/new_index.do" target="_blank">
+                        <img src="img/worldjob.png" alt="Image 5">
+                    </a>
+                </div>
+            </div>
+
+            <!-- 두 번째 이미지 블록 그룹 -->
+            <div class="image-grid">
+                <div class="image-title">[민간]</div>
+                <div class="image-block">
+                    <a href="https://www.jobkorea.co.kr/" target="_blank">
+                        <img src="img/jobko.png" alt="Image 6">
+                    </a>
+                </div>
+                <div class="image-block">
+                    <a href="https://www.saramin.co.kr/zf_user/" target="_blank">
+                        <img src="img/saramin.png" alt="Image 7">
+                    </a>
+                </div>
+                <div class="image-block">
+                    <a href="https://www.chu.ac.kr/main/main/index.php" target="_blank">
+                        <img src="img/jejuhalla.png" alt="Image 8">
+                    </a>
+                </div>
+                <div class="image-block">
+                    <a href="https://www.incruit.com/" target="_blank">
+                        <img src="img/incruit.png" alt="Image 9">
+                    </a>
+                </div>
+                <div class="image-block">
+                    <a href="https://www.career.co.kr/" target="_blank">
+                        <img src="img/career.png" alt="Image 10">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
