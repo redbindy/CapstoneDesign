@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Diagnostics
+<!DOCTYPE html>
 <html lang="kr">
 <head>
     <meta charset="utf-8" />
@@ -30,9 +31,9 @@
             margin-right: auto;
         }
 
-            .footer-up img {
-                float: right;
-            }
+        .footer-up img {
+            float: right;
+        }
     </style>
 
     <header class="main-head">
@@ -159,13 +160,38 @@
         </main>
 
         <div id="rsection">
-            @RenderSection("rsection", required: false)
+            <div class="visitor-counter">
+                방문자수 <br>
+                @{
+                    Database.Database db = Database.Database.Instance;
+
+                    string query = $"select count(*) from VisitLog";
+                    using (System.Data.SQLite.SQLiteDataReader? dbReader = db.Select(query))
+                    {
+                        if (dbReader == null)
+                        {
+                            Console.WriteLine("cannot read user data from db");
+                            return;
+                        }
+
+                        dbReader.Read();
+                        long count = dbReader.GetInt64(0);
+
+                        <text>@count</text>
+                    }
+                }
+            </div>
         </div>
 
     </div>
 
     <footer>
-
+        <style>
+            .cmds {
+                width: 50%;
+                height: 50%;
+            }
+        </style>
         <div class="footer-up">
             <div class="footer-info">
                 <h1>알려주카</h1>
@@ -174,7 +200,7 @@
                 <p>메일: mail@mail.com  |  연락처: 064-xxx-xxxx</p>
             </div>
 
-            <img src="~/cdms-logo.png" />
+            <img class="cmds" src="~/cdms-logo.png" />
         </div>
 
         <hr />

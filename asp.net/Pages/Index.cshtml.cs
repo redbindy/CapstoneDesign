@@ -14,9 +14,9 @@ namespace Capstone.Pages
             _logger = logger;
         }
 
-        public void OnGet()
+        public override void OnGet()
         {
-
+            base.OnGet();
         }
     }
 }

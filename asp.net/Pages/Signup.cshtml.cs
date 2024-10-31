@@ -16,7 +16,7 @@ namespace Capstone.Pages
 
         [BindProperty]
         [DataType(DataType.Password)]
-        [Required(ErrorMessage = "비밀번호를 입력해주세요."), MinLength(16, ErrorMessage = "최소 16자리 입력해주세요.")]
+        [Required(ErrorMessage = "비밀번호를 입력해주세요."), MinLength(8, ErrorMessage = "최소 8자리 입력해주세요.")]
         public string? Password { get; set; }
 
         [BindProperty]

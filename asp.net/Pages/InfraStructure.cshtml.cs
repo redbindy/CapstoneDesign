@@ -11,9 +11,9 @@ namespace Capstone.Pages
         {
         }
 
-        public void OnGet()
+        public override void OnGet()
         {
-
+            base.OnGet();
         }
     }
 }

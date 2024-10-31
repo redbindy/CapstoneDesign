@@ -17,8 +17,9 @@ namespace Capstone.Model
             updateEntities();
         }
 
-        public void OnGet()
+        public override void OnGet()
         {
+            base.OnGet();
             updatePageInfos(1);
             sendItems();
         }

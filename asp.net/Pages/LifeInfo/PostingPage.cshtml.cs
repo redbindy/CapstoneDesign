@@ -17,6 +17,7 @@ namespace Capstone.Pages.LifeInfo
 
         public void OnGet()
         {
+
         }
 
         public IActionResult OnPost()

@@ -19,9 +19,9 @@ namespace Capstone.Pages
         [Required(ErrorMessage = "비밀번호를 입력해주세요.")]
         public string? Password { get; set; }
 
-        public void OnGet()
+        public override void OnGet()
         {
-
+            base.OnGet();
         }
 
         public IActionResult OnPost()

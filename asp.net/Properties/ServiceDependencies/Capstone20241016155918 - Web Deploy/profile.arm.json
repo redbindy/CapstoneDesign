@@ -21,7 +21,7 @@
     },
     "resourceName": {
       "type": "string",
-      "defaultValue": "CapstoneTest3-2",
+      "defaultValue": "Capstone20241016155918",
       "metadata": {
         "description": "Name of the main resource to be created by this template."
       }

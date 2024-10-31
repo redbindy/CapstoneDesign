@@ -5,13 +5,12 @@ using System.Diagnostics;
 
 namespace Capstone.Pages
 {
-    public class MyPageModel : BasePageModel
+    public class MyPageModel : PageModel
     {
         public string? Name { get; private set; }
         public string? DisplayingUserType { get; private set; }
 
         public MyPageModel()
-            : base(-1, 1)
         {
         }
 
