@@ -47,15 +47,14 @@ for page in range(1, page_index + 1):
         all_notices.append({
                     '회사명': name,
                     '제목': title,
-                    '작성일': reg_date,
                     '마감일': close_date,
                     '주소': full_link,
                     '급여': pay
                 })
 
-csv_file_path = r'C:\Users\82105\Downloads\worknet.csv'
+csv_file_path = './worknet.csv'
 with open(csv_file_path, mode='w', newline='', encoding='utf-8-sig') as csv_file:
-    fieldnames = ['회사명', '제목', '작성일', '마감일', '주소', '급여']
+    fieldnames = ['회사명', '제목', '마감일', '주소', '급여']
     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
     writer.writeheader()
 

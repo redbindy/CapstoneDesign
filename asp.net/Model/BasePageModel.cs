@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Data.SQLite;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics;
-using System.Xml.Linq;
 
 namespace Capstone.Model
 {
@@ -29,7 +26,7 @@ namespace Capstone.Model
         {
             string remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString();
             string cookie = (string)ViewData["UserCookie"];
-            string datetime = DateTime.UtcNow.AddHours(9).ToString();
+            string datetime = DateTime.UtcNow.AddHours(9).ToString("yyyy-MM-dd");
 
             string query;
             if (cookie != null)

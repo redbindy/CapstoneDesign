@@ -75,8 +75,11 @@ namespace Capstone.Pages
 
                 HttpContext.SignInAsync(
                     CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(claimsIdentity)
-                    );
+                    new ClaimsPrincipal(claimsIdentity),
+                    new AuthenticationProperties
+                    {
+                        IsPersistent = false,
+                    });
 
                 CookieOptions cookieOptions = new CookieOptions
                 {

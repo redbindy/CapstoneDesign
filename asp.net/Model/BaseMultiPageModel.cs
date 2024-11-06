@@ -9,7 +9,7 @@ namespace Capstone.Model
 
         private List<string> mGridItems = new List<string>(Program.DEFAULT_CAPACITY);
 
-        private const int CELL_COUNT = 9;
+        protected const int CELL_COUNT = 9;
 
         protected BaseMultiPageModel()
             : base(1, 1)

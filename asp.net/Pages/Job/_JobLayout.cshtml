@@ -5,6 +5,10 @@
 @section lsection {
 
     <style>
+        .job {
+            background-color: lightgray;
+        }
+
         .sidebar-tap :hover {
             background-color: lightgray;
         }
@@ -29,33 +33,23 @@
     <div class="sidebar">
         <!-- 좌측바 -->
         <div class="sidebar-header">
-            <h2>생활</h2>
+            <h2>취업</h2>
         </div>
+
         <ul>
             <li class="sidebar-tap">
-                <a asp-page="LifeThread" class="LifeThread">
-                    생활 게시판
+                <a asp-page="JobPages" class="job-pages">
+                    취업 정보 사이트
                 </a>
             </li>
 
             <li class="sidebar-tap">
-                <a asp-page="Tour" class="Tour">
-                    관광
-                </a>
-            </li>
-            <li class="sidebar-tap">
-                <a asp-page="Welfare" class="Welfare">
-                    복지
+                <a asp-page="JobCollection" class="job-collection">
+                    공고 모음
                 </a>
             </li>
         </ul>
     </div>
 }
-
-<style>
-    .life-info {
-        background-color: lightgray;
-    }
-</style>
 
 @RenderBody()

@@ -30,7 +30,7 @@
     @{
         object? gridItemsDynamic = ViewData["GridItems"];
 
-        Debug.Assert(gridItemsDynamic != null);
+        // Debug.Assert(gridItemsDynamic != null);
         List<string> gridItems = (List<string>)gridItemsDynamic;
 
         if (gridItems != null && gridItems.Count != 0)

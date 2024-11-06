@@ -33,4 +33,38 @@
         <div class="name">@Model.Name</div>
         <div class="user-type">@Model.DisplayingUserType</div>
     </div>
+
+    <div class="Posts">
+        <h3>작성한 게시글</h3>
+        <ul>
+            @{
+                if (ViewData["Posts"] != null)
+                {
+                    List<ListEntity> posts = (List<ListEntity>)ViewData["Posts"];
+
+                    foreach (ListEntity entity in posts)
+                    {
+                        @Html.Raw(entity.ShowData());
+                    }
+                }
+            }
+        </ul>
+    </div>
+
+    <div class="Comments">
+        <h3>작성한 댓글</h3>
+        <ul>
+            @{
+                if (ViewData["Comments"] != null)
+                {
+                    List<ListEntity> comments = (List<ListEntity>)ViewData["Comments"];
+
+                    foreach (ListEntity entity in comments)
+                    {
+                        @Html.Raw(entity.ShowData());
+                    }
+                }
+            }
+        </ul>
+    </div>
 </body>

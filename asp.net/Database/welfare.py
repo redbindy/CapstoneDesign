@@ -102,7 +102,7 @@ if df.empty:
     print("크롤링한 데이터가 비어 있습니다.")
 else:
     # 데이터프레임을 CSV 파일로 저장
-    df.to_csv('welfare_service.csv', index=False)
+    df.to_csv('welfare_service.csv', index=False, encoding = "utf-8")
     print("크롤링 완료 및 CSV 파일 저장 완료")
 
 # 브라우저 닫기
