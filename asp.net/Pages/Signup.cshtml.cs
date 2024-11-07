@@ -26,10 +26,6 @@ namespace Capstone.Pages
         [BindProperty]
         public string? UserType { get; set; }
 
-        public void OnGet()
-        {
-        }
-
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
