@@ -1,6 +1,143 @@
-﻿@page
-@model IndexModel;
+@page
+@model IndexModel
+@{
+    ViewBag.Title = "알려주카 - 소모임 공고";
+}
 
-<body>
-    메인
-</body>
+<div class="highlight-section">
+    <h2>주목할 만한 제주 소모임✨</h2>
+    <div class="card-container">
+        <a href="https://open.kakao.com/o/gOzBpIqg" class="card">
+            <div class="card-image" style="background-image: url('/images/jeju_ss.jpg');"></div>
+            <div class="card-content">
+                <h3>제주 in 제주 친목모임 🧑‍🤝‍🧑</h3>
+                <p>178명 참가</p>
+            </div>
+        </a>
+        <a href="https://open.kakao.com/o/gAn32kGe" class="card">
+            <div class="card-image" style="background-image: url('/images/jeju_minton.jpg');"></div>
+            <div class="card-content">
+                <h3>🏸제주 배드민턴 초보 모임 </h3>
+                <p>83명 참가 · 30분 전</p>
+            </div>
+        </a>
+        <a href="https://open.kakao.com/o/g7ZtXBP" class="card">
+            <div class="card-image" style="background-image: url('/images/cacc.jpg');"></div>
+            <div class="card-content">
+                <h3>제주 반려견 모임 🐶</h3>
+                <p>69명 참가 · 방금 등록됨</p>
+            </div>
+        </a>
+        <a href="https://open.kakao.com/o/gFYjKCgg" class="card">
+            <div class="card-image" style="background-image: url('/images/jeju_climing.jpg');"></div>
+            <div class="card-content">
+                <h3>제주 클라이밍 🧗</h3>
+                <p>45명 참가 · 1시간 전</p>
+            </div>
+        </a>
+        <a href="https://open.kakao.com/o/gZJ2WP1e" class="card">
+            <div class="card-image" style="background-image: url('/images/jeju_dsg.jpg');"></div>
+            <div class="card-content">
+                <h3>제주 2030 노는게 제일 조아</h3>
+                <p>120명 참가 · 2시간 전</p>
+            </div>
+        </a>
+        <a href="https://open.kakao.com/o/glFRwDlf" class="card">
+            <div class="card-image" style="background-image: url('/images/jeju_swimming.jpg');"></div>
+            <div class="card-content">
+                <h3>[스윔클] 제주 바다수영 모임 🏊‍♂️</h3>
+                <p>58명 참가 · 어제 등록됨</p>
+            </div>
+        </a>
+        <a href="https://open.kakao.com/o/gozw0r9" class="card">
+            <div class="card-image" style="background-image: url('/images/jeju_rcsahr.jpg');"></div>
+            <div class="card-content">
+                <h3>제주 친목 내놔 !!!! 😄</h3>
+                <p>285명 참가 · 3시간 전</p>
+            </div>
+        </a>
+        <a href="https://open.kakao.com/o/gBFgGNBe" class="card">
+            <div class="card-image" style="background-image: url('/images/jeju_boat.jpg');"></div>
+            <div class="card-content">
+                <h3>제주 레저보트 🚤</h3>
+                <p>95명 참가 · 오늘 등록됨</p>
+            </div>
+        </a>
+        <a href="https://open.kakao.com/o/g8zVG5Md" class="card">
+            <div class="card-image" style="background-image: url('/images/jeju_foood.jpg');"></div>
+            <div class="card-content">
+                <h3>야미슐랭in제주 🍽️</h3>
+                <p>73명 참가 · 5시간 전</p>
+            </div>
+        </a>
+        <a href="https://open.kakao.com/o/gQH49Uyc" class="card">
+            <div class="card-image" style="background-image: url('/images/jeju_exer.jpg');"></div>
+            <div class="card-content">
+                <h3>제주 운동 할 사람 모여라 🏃‍♂️</h3>
+                <p>60명 참가 · 2일 전</p>
+            </div>
+        </a>
+    </div>
+</div>
+
+<style>
+    .highlight-section {
+        padding: 20px;
+        background-color: #1c1c1e;
+        color: #ffffff;
+        border-radius: 12px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+        .highlight-section h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .card {
+        width: 220px;
+        background-color: #2c2c2e;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s, box-shadow 0.3s;
+        text-decoration: none;
+        color: inherit;
+    }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+    .card-image {
+        height: 140px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .card-content {
+        padding: 15px;
+    }
+
+        .card-content h3 {
+            font-size: 1.1em;
+            margin: 0 0 10px;
+            color: #ffffff;
+        }
+
+        .card-content p {
+            margin: 0;
+            color: #b0b0b0;
+            font-size: 0.9em;
+        }
+</style>
