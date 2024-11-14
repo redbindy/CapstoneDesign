@@ -28,6 +28,67 @@
                 padding-bottom: 10px;
                 width: 100%;
             }
+
+        .content {
+            display: grid;
+            grid-template-rows: repeat(1, 1fr);
+            grid-template-columns: repeat(5, 1fr);
+            row-gap: 10px;
+            column-gap: 10px;
+        }
+
+        .image-block {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-block img {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+        }
+
+        .image-title {
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: left;
+            font-size: 20px;
+        }
+
+        .empty {
+            display: grid;
+            padding-top: 50px;
+        }
+
+        .table list th {
+            border-bottom: 2px solid #000000;
+        }
+
+        .table.list th, .table.list td {
+            text-align: center;
+        }
+
+        colgroup {
+            display: table-column-group;
+            border-top: 2px solid #000000;
+        }
+
+        .col {
+            display: table-column;
+        }
+
+        .paging {
+            margin-top: 35px;
+            text-align: center;
+        }
+
+        .paging a, paging strong{
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #000000;
+        }
+
     </style>
 
     <div class="sidebar">

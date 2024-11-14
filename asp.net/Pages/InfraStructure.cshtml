@@ -47,9 +47,17 @@
 }
 
 <style>
+    .container {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 10px;
+        column-gap: 10px;
+    }
+
     .container img {
-        width: 50%;
-        height: 50%;
+        width: 100%;
+        height: 100%;
     }
 </style>
 
@@ -57,6 +65,7 @@
     <div class="container">
         <img src="/geo.png" />
         <img src="/geo1.png" />
+        <img  />
         <img src="/geo2.png" />
     </div>
 </body>
