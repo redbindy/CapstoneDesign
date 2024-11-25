@@ -7,7 +7,7 @@ namespace Capstone.Model
     public class BaseAccountModel : BasePageModel
     {
         public BaseAccountModel()
-            : base(maxPageCount: -1, pageNumber: 1)
+            : base(maxPageNumber: -1, pageNumber: 1)
         {
         }
 

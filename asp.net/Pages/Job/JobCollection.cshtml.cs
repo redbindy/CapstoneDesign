@@ -13,7 +13,9 @@ namespace Capstone.Pages.Job
         {
             mEntities.Clear();
 
-            string query = $"select Recruitor, Title, DueDate, Url, Pay from Job where idx >= 1 and idx <= 90 order by DueDate";
+            string today = DateTime.UtcNow.AddHours(9).ToString("yy'/'MM'/'dd");
+
+            string query = $"select Recruitor, Title, DueDate, Url, Pay from Job where DueDate >= \'{today}\' order by DueDate limit 36 offset {(PageNumber - 1) * CELL_COUNT}";
 
             Database.Database db = Database.Database.Instance;
             using (System.Data.SQLite.SQLiteDataReader? dbReader = db.Select(query))

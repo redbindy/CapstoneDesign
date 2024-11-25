@@ -12,7 +12,7 @@ namespace Capstone.Pages.LifeInfo
         {
             mEntities.Clear();
 
-            string query = $"select Name, ImgUrl, Url from Attraction where idx >= 1 and idx <= 90";
+            string query = $"select Name, ImgUrl, Url from Attraction limit 36 offset {(PageNumber - 1) * CELL_COUNT}";
 
             Database.Database db = Database.Database.Instance;
             using (System.Data.SQLite.SQLiteDataReader? dbReader = db.Select(query))

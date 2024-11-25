@@ -13,26 +13,26 @@
 <body>
     <style>
         a {
-            display: block;
-            width: 100%;
-            text-decoration: none;
-            color: black;
+        display: block;
+        width: 100%;
+        text-decoration: none;
+        color: black;
         }
 
-            a:hover {
-                color: black
-            }
+        a:hover {
+        color: black
+        }
 
         .footer-up {
-            display: flex;
+        display: flex;
         }
 
         .footer-info {
-            margin-right: auto;
+        margin-right: auto;
         }
 
         .footer-up img {
-            float: right;
+        float: right;
         }
     </style>
 
@@ -52,11 +52,11 @@
 
         <script>
             function performSearch() {
-                var query = document.getElementById('search-input').value;
-                if (query) {
-                    var url = 'https://www.google.co.kr/search?q=' + encodeURIComponent(query);
-                    window.location.href = url;
-                }
+            var query = document.getElementById('search-input').value;
+            if (query) {
+            var url = 'https://www.google.co.kr/search?q=' + encodeURIComponent(query);
+            window.location.href = url;
+            }
             }
         </script>
 
@@ -83,7 +83,7 @@
 
     <style>
         .taps nav ul li a {
-            padding: 20px;
+        padding: 20px;
         }
     </style>
 
@@ -108,27 +108,27 @@
 
     <style>
         .page-body {
-            display: grid;
-            grid-template-columns: 1fr 8fr 1fr;
+        display: grid;
+        grid-template-columns: 1fr 8fr 1fr;
         }
 
         .page-buttons {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 5px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 5px;
         }
 
         .page-button {
-            display: inline-block;
-            padding: 10px 10px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #007bff;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease
+        display: inline-block;
+        padding: 10px 10px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #007bff;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease
         }
     </style>
 
@@ -144,16 +144,26 @@
             </div>
             <div class="page-buttons">
                 @{
-                    object? maxPageCountDynamic = ViewData["MaxPageCount"];
+                    object? maxPageNumberDynamic = ViewData["MaxPageNumber"];
+                    object? pageNumberDynamic = ViewData["PageNumber"];
 
-                    if (maxPageCountDynamic != null)
+                    if (maxPageNumberDynamic != null && pageNumberDynamic != null)
                     {
-                        for (int i = 1; i <= (int)maxPageCountDynamic; ++i)
+                        int pageNumber = (int)pageNumberDynamic;
+                        int maxPageNumber = (int)maxPageNumberDynamic;
+
+                        <form method="get">
+                            <a class="page-button" asp-page-handler="OnPageButton" asp-route-pageNumber="@Math.Max(pageNumber - 1, 1)">&lt</a>
+                        </form>
+                        for (int i = pageNumber; i <= maxPageNumber; ++i)
                         {
                             <form method="get">
                                 <a class="page-button" asp-page-handler="OnPageButton" asp-route-pageNumber="@i">@i</a>
                             </form>
                         }
+                        <form method="get">
+                            <a class="page-button" asp-page-handler="OnPageButton" asp-route-pageNumber="@Math.Min(pageNumber + 1, maxPageNumber)">&gt</a>
+                        </form>
                     }
                 }
             </div>
@@ -179,6 +189,10 @@
 
                         <text>@count</text>
                     }
+
+                    // Database.PythonExecuter.ExecuteVisitorPy();
+
+                    // @Html.Raw(File.ReadAllText("wwwroot/db/VisitorGraph.html"));
                 }
             </div>
         </div>

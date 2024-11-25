@@ -7,18 +7,19 @@ namespace Capstone.Model
     {
         public int PageNumber { get; protected set; }
 
-        protected BasePageModel(int maxPageCount, int pageNumber)
+        protected BasePageModel(int maxPageNumber, int pageNumber)
         {
             Debug.Assert(pageNumber > 0);
 
             PageNumber = pageNumber;
         }
 
-        protected void setPageInfos(int maxPageCount, int pageNumber)
+        protected void setPageInfos(int maxPageNumber, int pageNumber)
         {
             Debug.Assert(pageNumber > 0);
 
-            ViewData["MaxPageCount"] = maxPageCount;
+            ViewData["MaxPageNumber"] = maxPageNumber;
+            ViewData["PageNumber"] = pageNumber;
             PageNumber = pageNumber;
         }
 

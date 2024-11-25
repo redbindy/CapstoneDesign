@@ -18,7 +18,7 @@ namespace Capstone.Pages.LifeInfo
 
             Database.Database db = Database.Database.Instance;
 
-            string query = $"select * from Post order by Time desc";
+            string query = $"select * from Post order by Time desc limit 36 offset {(PageNumber - 1) * CELL_COUNT}";
             using (System.Data.SQLite.SQLiteDataReader? dbReader = db.Select(query))
             {
                 if (dbReader == null)

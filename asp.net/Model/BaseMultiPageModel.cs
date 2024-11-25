@@ -21,6 +21,8 @@ namespace Capstone.Model
         {
             base.OnGet();
             updatePageInfos(1);
+            updateEntities();
+            updatePageInfos(1);
             sendItems();
         }
 
@@ -29,6 +31,8 @@ namespace Capstone.Model
             Debug.Assert(pageNumber > 0);
 
             updatePageInfos(pageNumber);
+            updateEntities();
+            updatePageInfos(pageNumber);
             sendItems();
         }
 
@@ -36,7 +40,9 @@ namespace Capstone.Model
         {
             Debug.Assert(pageNumber > 0);
 
-            setPageInfos((mEntities.Count + CELL_COUNT - 1) / CELL_COUNT, pageNumber);
+            int maxPageNumber = (int)(pageNumber + Math.Round(mEntities.Count / (double)CELL_COUNT));
+
+            setPageInfos(maxPageNumber, pageNumber);
         }
 
         protected abstract void updateEntities();
@@ -45,14 +51,8 @@ namespace Capstone.Model
         {
             mGridItems.Clear();
 
-            int start = (PageNumber - 1) * CELL_COUNT;
-            int end = start + CELL_COUNT;
-            if (end > mEntities.Count)
-            {
-                end = mEntities.Count;
-            }
-
-            for (int i = start; i < end; ++i)
+            int end = (int)Math.Min(CELL_COUNT, mEntities.Count);
+            for (int i = 0; i < end; ++i)
             {
                 string gridItem = mEntities[i].ShowData();
                 mGridItems.Add(gridItem);
