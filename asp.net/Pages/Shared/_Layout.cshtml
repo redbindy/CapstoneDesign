@@ -190,8 +190,7 @@
                         <text>@count</text>
                     }
 
-                    // Database.PythonExecuter.ExecuteVisitorPy();
-
+                    @Html.Raw(Database.PythonExecuter.GetVisitorHTML());
                     // @Html.Raw(File.ReadAllText("wwwroot/db/VisitorGraph.html"));
                 }
             </div>
